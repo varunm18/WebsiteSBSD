@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { jwtDecode } from "jwt-decode";
+import {Helmet} from 'react-helmet';
+import './App.css';
 
 function App() {
 
@@ -56,11 +58,17 @@ function App() {
   return (
     <div>
 
+      <Helmet>
+        <style>{'body { background-color: black; }'}</style>
+      </Helmet>
+
+      <h1 id = "InitialHeading"> WEBSITE TITLE </h1>
+
       {(typeof backendData.users == 'undefined') ? (
         <p>Loading ...</p>
       ): (
         backendData.users.map((user,i) => (
-          <p key = {i}>{user}</p>
+          <p key = {i} >{user}</p>
         ))
       )}
 
