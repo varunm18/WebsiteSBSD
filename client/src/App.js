@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import {Helmet} from 'react-helmet';
 import './App.css';
 
+
 function App() {
 
   const [user, setUser] = useState({})
@@ -59,7 +60,7 @@ function App() {
     <div>
 
       <Helmet>
-        <style>{'body { background-color: black; }'}</style>
+        <style>{'body { background-color: lightblue; }'}</style>
       </Helmet>
 
       <h1 id = "InitialHeading"> WEBSITE TITLE </h1>
