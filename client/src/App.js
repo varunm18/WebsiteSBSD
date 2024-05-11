@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { jwtDecode } from "jwt-decode";
-import {Helmet} from 'react-helmet';
 import './App.css';
+import {Navbar, Nav, Container} from "react-bootstrap"
+import {Helmet} from "react-helmet"
 
 
 function App() {
 
   const [user, setUser] = useState({})
+  // module.exports = { user };
 
   const [backendData, setBackendData] = useState([{}])
 
@@ -16,11 +18,13 @@ function App() {
     console.log(userObject)
     setUser(userObject)
     document.getElementById("signInDiv").hidden = true
+    document.getElementById("signOutDiv").hidden = false
   }
 
   function handleSignOut() {
     setUser({});
     document.getElementById("signInDiv").hidden = false
+    document.getElementById("signOutDiv").hidden = true
   }
 
   useEffect(() => {
@@ -46,24 +50,39 @@ function App() {
     )
   }, [])
 
-  // useEffect(() => {
-  //   fetch("/api").then(
-  //     response => response.json()
-  //   ).then(
-  //     data => {
-  //       setBackendData(data)
-  //     }
-  //   )
-  // }, [])
-
   return (
     <div>
+      <Navbar bg="dark" data-bs-theme="dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                  <Helmet>
+              <style>{'body { background-color: lightblue; }'}</style>
+              </Helmet>
 
-      <Helmet>
-        <style>{'body { background-color: lightblue; }'}</style>
-      </Helmet>
-
-      <h1 id = "InitialHeading"> WEBSITE TITLE </h1>
+              <h1 id = "InitialHeading"> SBHS Attendance Analytics </h1>
+              </li>
+          </ul>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <div id="signInDiv"></div>
+                  <div id="signOutDiv" hidden>
+                  { Object.keys(user).length != 0 &&
+                    <button onClick={ (e) => handleSignOut(e)}>Sign Out</button>
+                  }
+                  {user &&
+                    <div>
+                      <img src={user.picture}></img>
+                      <h3 color='white'>{user.name}</h3>
+                    </div>
+                  }
+                  </div>
+                </li>
+            </ul>
+        </div>
+      </Navbar>
 
       {(typeof backendData.users == 'undefined') ? (
         <p>Loading ...</p>
@@ -72,18 +91,6 @@ function App() {
           <p key = {i} >{user}</p>
         ))
       )}
-
-      <div id="signInDiv"></div>
-      { Object.keys(user).length != 0 &&
-        <button onClick={ (e) => handleSignOut(e)}>Sign Out</button>
-      }
-      {user &&
-        <div>
-          <img src={user.picture}></img>
-          <h3>{user.name}</h3>
-        </div>
-      }
-      
     </div>
   )
 }
