@@ -4,9 +4,85 @@
     text-align: center;
     font-size: 60px;
     margin-top: 15px;
+    margin-left: 25px;
 
+}
+
+#username{
+    color: white;
+    font-family: 'Times New Roman';
+}
+
+#userPicture{
+    max-width: 24px;
+    max-height: 24px;
+}
+
+#google{
+    margin-right: 50px;
+}
+
+.container{
+    background-color: black;
+    color:white;
+    height:500px;
+    width:1000px;
+    font-family:'Gill Sans';
+    border-radius:14px;
+}
+
+.btn-group{
+    margin-left:10px;
+    justify-content:center;
+    text-align: center;
+}
+
+.form-select{
+    border-color: darkgreen;
+    border-width: 87px;
+    border-radius: 12px;
+    font-family:'Times New Roman';
+    
+}
+
+.select{
+    margin-right: 134px;
+    width:100px;
+}
+
+.selectParagraph{
+    text-align: center;
+}
+
+#submitButton{
+    width: 250px;
+    height:105px;
+    font-size: 48px;
+    background-color: darkgreen;
+    margin-left:15px;
+    text-align: center;
+}
+
+#dataHeading{
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    
 }
 
 #signIn{
     text-align: center;
+}
+
+#signOutButton{
+    background-color: #fbfffe;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+    font-size: 16px;
+    margin: 4px 2px;
 }
