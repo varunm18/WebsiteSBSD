@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
-
 const sqlite3 = require('sqlite3').verbose();
+
+
+// const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./AttendanceData.db', (err) => {
     if(err){
         console.log(err.message);

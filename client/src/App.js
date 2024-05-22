@@ -29,6 +29,47 @@ function App() {
     document.getElementById("signInDiv").hidden = false
     document.getElementById("signOutDiv").hidden = true
   }
+  
+  function findStudents() {
+    let query = ""
+    var firstOption = document.getElementById("gradeLevel")
+    var gradeLevel = firstOption.options[firstOption.selectedIndex].value
+    if(!(gradeLevel === "None")){
+      query += "?gradeLevel=" + gradeLevel
+    }
+
+    var secondOption = document.getElementById("calculatedRace")
+    var calculatedRace = secondOption.options[secondOption.selectedIndex].value;
+    if(!(calculatedRace === "None")){
+      query += "?CalculatedRace=" + calculatedRace
+    }
+
+    var thirdOption = document.getElementById("economicallyDisadvantaged")
+    var economicallyDisadvantaged = thirdOption.options[thirdOption.selectedIndex].value;
+    if(!(economicallyDisadvantaged === "None")){
+      query += "?EconomicallyDisadvantaged=" + economicallyDisadvantaged
+    }
+
+    var fourthOption = document.getElementById("hasDetentions")
+    var hasDetentions = fourthOption.options[fourthOption.selectedIndex].value;
+    if(!(hasDetentions === "None")){
+      query += "?Conduct:HasDetentions=" + economicallyDisadvantaged
+    }
+
+    var fifthOption = document.getElementById("overNineAbsences")
+    var overNineAbsences = fifthOption.options[fifthOption.selectedIndex].value;
+    if(!(overNineAbsences === "None")){
+      query += "?Att:Has09DayAbsLtr=" + overNineAbsences
+    }
+
+    var sixthOption = document.getElementById("overFourUnexcused")
+    var overFourUnexcused = sixthOption.options[sixthOption.selectedIndex].value;
+    if(!(overFourUnexcused === "None")){
+      query += "?Att:Has04DayUxAbsLtr=" + overFourUnexcused
+    }
+
+    console.log(query)
+  }
 
   useEffect(() => {
     /* global google */
@@ -119,7 +160,7 @@ function App() {
 
                 <div class = "select">
                   <p class = "selectParagraph">Calculated Race</p>
-                  <select id = "CalculatedRace" class="form-select" aria-label="Default select example">
+                  <select id = "calculatedRace" class="form-select" aria-label="Default select example">
                     <option selected>None</option>
                     <option value="1">White</option>
                     <option value="2">Asian</option>
@@ -130,8 +171,8 @@ function App() {
                 </div>
 
                 <div class = "select">
-                <p class = "selectParagraph">Participated In Sports?</p>
-                  <select id = "sportParticipation" class="form-select" aria-label="Default select example">
+                <p class = "selectParagraph">Economically Disadvantaged</p>
+                  <select id = "economicallyDisadvantaged" class="form-select" aria-label="Default select example">
                     <option selected>None</option>
                     <option value="1">Yes</option>
                     <option value="2">No</option>
@@ -139,8 +180,8 @@ function App() {
                 </div>
 
                 <div class = "select">
-                <p class = "selectParagraph">Participated In Clubs?</p>
-                  <select id = "clubParticipation" class="form-select" aria-label="Default select example">
+                <p class = "selectParagraph">Has Detentions</p>
+                  <select id = "hasDetentions" class="form-select" aria-label="Default select example">
                     <option selected>None</option>
                     <option value="1">Yes</option>
                     <option value="2">No</option>
@@ -148,8 +189,8 @@ function App() {
                 </div>
 
                 <div class = "select">
-                <p class = "selectParagraph">Has Detentions?</p>
-                  <select id = "hasDetention" class="form-select" aria-label="Default select example">
+                <p class = "selectParagraph">Over 9 Absences</p>
+                  <select id = "overNineAbsences" class="form-select" aria-label="Default select example">
                     <option selected>None</option>
                     <option value="1">Yes</option>
                     <option value="2">No</option>
@@ -157,8 +198,8 @@ function App() {
                 </div>
 
                 <div class = "select">
-                <p class = "selectParagraph">Has Suspensions?</p>
-                  <select id = "hasSuspensions" class ="form-select" aria-label="Default select example">
+                <p class = "selectParagraph">Over 4 Unexcused Absences</p>
+                  <select id = "overFourUnexcused" class ="form-select" aria-label="Default select example">
                     <option selected>None</option>
                     <option value="1">Yes</option>
                     <option value="2">No</option>
@@ -172,12 +213,7 @@ function App() {
         </div>
         <br></br>
         <br></br>
-        <Button onClick = "findStudents()"id = "submitButton" variant="outline-light">Submit</Button>
-        <script>
-          function findStudents(){
-            
-          }
-        </script>
+        <Button onClick = { (e) => findStudents(e)} id = "submitButton" variant="outline-light">Submit</Button>
       </div>
 
       {(typeof backendData == 'undefined') ? (
@@ -188,7 +224,9 @@ function App() {
         )
       )}
     </div>
+
   )
+
 }
 
 export default App
