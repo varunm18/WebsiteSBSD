@@ -17,19 +17,67 @@ const db = new sqlite3.Database('./AttendanceData.db', (err) => {
 
 app.get("/api", (req, res) => {
     var sql = 'SELECT * FROM DemoData';
-    console.log(sql);
+    let params = 0;
     if(req.query.grade){
         sql+=' WHERE GradeLevel='+req.query.grade;
+        params++;
     }
     if(req.query.race){
-        sql+=' WHERE CalculatedRace='+req.query.race;
+        if(params>0){
+            sql+=" AND "
+        }
+        else{
+            sql+=" WHERE "
+        }
+        sql+='CalculatedRace='+req.query.race;
+        params++;
     }
+    if(req.query.econDis){
+        if(params>0){
+            sql+=" AND "
+        }
+        else{
+            sql+=" WHERE "
+        }
+        sql+='EconomicallyDisadvantaged='+req.query.econDis;
+        params++;
+    }
+    if(req.query.detention){
+        if(params>0){
+            sql+=" AND "
+        }
+        else{
+            sql+=" WHERE "
+        }
+        sql+='HasDetentions='+req.query.detention;
+        params++;
+    }
+    if(req.query.nineAbsences){
+        if(params>0){
+            sql+=" AND "
+        }
+        else{
+            sql+=" WHERE "
+        }
+        sql+='Has09DayAbsLtr='+req.query.nineAbsences;
+        params++;
+    }
+    if(req.query.fourAbsences){
+        if(params>0){
+            sql+=" AND "
+        }
+        else{
+            sql+=" WHERE "
+        }
+        sql+='Has04DayUxAbsLtr='+req.query.fourAbsences;
+        params++;
+    }
+    console.log(sql);
     db.all(sql, (err, rows) => {
         if (err) {
             console.error(err.message);
             res.status(500).send('Internal server error');
         } else {
-            console.log(typeof rows)
             res.json(rows);
         }
     });

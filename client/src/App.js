@@ -31,42 +31,115 @@ function App() {
   }
   
   function findStudents() {
-    let query = ""
+    let params = 0;
+    let query = "/api"
     var firstOption = document.getElementById("gradeLevel")
     var gradeLevel = firstOption.options[firstOption.selectedIndex].text
     if(!(gradeLevel === "None")){
-      query += "?gradeLevel=" + gradeLevel
+      query += "?grade=" + gradeLevel
+      params++;
+      console.log(params)
     }
 
     var secondOption = document.getElementById("calculatedRace")
     var calculatedRace = secondOption.options[secondOption.selectedIndex].text;
     if(!(calculatedRace === "None")){
-      query += "?CalculatedRace=" + calculatedRace
+      if(params>0){
+        query+="&"
+      }
+      else{
+        query+="?"
+      }
+      query += "race=" + '\''+calculatedRace+'\''
+      params++;
     }
 
     var thirdOption = document.getElementById("economicallyDisadvantaged")
     var economicallyDisadvantaged = thirdOption.options[thirdOption.selectedIndex].text;
     if(!(economicallyDisadvantaged === "None")){
-      query += "?EconomicallyDisadvantaged=" + economicallyDisadvantaged
+      if(params>0){
+        query+="&"
+      }
+      else{
+        query+="?"
+      }
+      query += "econDis="
+      if(economicallyDisadvantaged==='Yes'){
+        query += '\'Y\''
+      }
+      else{
+        query += '\'N\''
+      }
+      params++;
     }
 
     var fourthOption = document.getElementById("hasDetentions")
     var hasDetentions = fourthOption.options[fourthOption.selectedIndex].text;
     if(!(hasDetentions === "None")){
-      query += "?Conduct:HasDetentions=" + economicallyDisadvantaged
+      if(params>0){
+        query+="&"
+      }
+      else{
+        query+="?"
+      }
+      query += "detention="
+      if(hasDetentions==='Yes'){
+        query += '\'Y\''
+      }
+      else{
+        query += '\'N\''
+      }
+      params++;
     }
 
     var fifthOption = document.getElementById("overNineAbsences")
     var overNineAbsences = fifthOption.options[fifthOption.selectedIndex].text;
     if(!(overNineAbsences === "None")){
-      query += "?Att:Has09DayAbsLtr=" + overNineAbsences
+      if(params>0){
+        query+="&"
+      }
+      else{
+        query+="?"
+      }
+      query += "nineAbsences="
+      if(overNineAbsences==='Yes'){
+        query += '\'Y\''
+      }
+      else{
+        query += '\'N\''
+      }
+      params++;
     }
 
     var sixthOption = document.getElementById("overFourUnexcused")
     var overFourUnexcused = sixthOption.options[sixthOption.selectedIndex].text;
     if(!(overFourUnexcused === "None")){
-      query += "?Att:Has04DayUxAbsLtr=" + overFourUnexcused
+      if(params>0){
+        query+="&"
+      }
+      else{
+        query+="?"
+      }
+      query += "fourAbsences="
+      if(overFourUnexcused==='Yes'){
+        query += '\'Y\''
+      }
+      else{
+        query += '\'N\''
+      }
+      params++;
     }
+
+    console.log(query)
+
+    fetch(query).then(
+      response => response.json()
+    ).then(
+      data => {
+        console.log(typeof data)
+        setBackendData(data)
+      }
+    )
 
     console.log(query)
   }
@@ -230,7 +303,7 @@ function App() {
         <p>Loading ...</p>
       ): (
         backendData.map((student, i) => 
-        <p key = {i} >{student.FirstName} {student.LastName} Grade: {student.GradeLevel}</p>
+        <p key = {i} >{student.FirstName} {student.LastName}, Grade: {student.GradeLevel}, Race: {student.CalculatedRace}, Econ Disadvantaged: {student.EconomicallyDisadvantaged}, Detentions: {student.HasDetentions}, &gt;9 Absences: {student.Has09DayAbsLtr}, &gt;4 Absences: {student.Has04DayUxAbsLtr}</p>
         )
       )}
     </div>
