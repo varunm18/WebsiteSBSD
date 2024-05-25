@@ -89,10 +89,11 @@
 
 #graphingButton{
     margin-left:100px;
-    width: 125px;
-    height:52px;
-    font-size: 24px;
-    background-color: darkgreen;
+    width: 200px;
+    height:85px;
+    font-size: 30px;
+    background-color: white;
     text-align: center;
-    font-family:'Trebuchet MS'
+    font-family:'Trebuchet MS';
+    color:black;
 }

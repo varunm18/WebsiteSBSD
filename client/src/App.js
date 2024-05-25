@@ -5,6 +5,7 @@ import {Navbar, Nav, Container, FormSelect} from "react-bootstrap"
 import {Helmet} from "react-helmet"
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 
 
 function App() {
@@ -185,9 +186,11 @@ function App() {
         <div>
           <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
-               <li class="nav-item active">
-                 <Button id = "graphingButton" variant="outline-light">Graphing</Button>
-               </li>
+              <li class="nav-item active">
+                <Button id = "graphingButton" variant="outline-light">
+                  <Link to = '/findTrends'>Find Trends</Link>
+                </Button>
+              </li>
             </ul>
           </div>
 
