@@ -33,37 +33,37 @@ function App() {
   function findStudents() {
     let query = ""
     var firstOption = document.getElementById("gradeLevel")
-    var gradeLevel = firstOption.options[firstOption.selectedIndex].value
+    var gradeLevel = firstOption.options[firstOption.selectedIndex].text
     if(!(gradeLevel === "None")){
       query += "?gradeLevel=" + gradeLevel
     }
 
     var secondOption = document.getElementById("calculatedRace")
-    var calculatedRace = secondOption.options[secondOption.selectedIndex].value;
+    var calculatedRace = secondOption.options[secondOption.selectedIndex].text;
     if(!(calculatedRace === "None")){
       query += "?CalculatedRace=" + calculatedRace
     }
 
     var thirdOption = document.getElementById("economicallyDisadvantaged")
-    var economicallyDisadvantaged = thirdOption.options[thirdOption.selectedIndex].value;
+    var economicallyDisadvantaged = thirdOption.options[thirdOption.selectedIndex].text;
     if(!(economicallyDisadvantaged === "None")){
       query += "?EconomicallyDisadvantaged=" + economicallyDisadvantaged
     }
 
     var fourthOption = document.getElementById("hasDetentions")
-    var hasDetentions = fourthOption.options[fourthOption.selectedIndex].value;
+    var hasDetentions = fourthOption.options[fourthOption.selectedIndex].text;
     if(!(hasDetentions === "None")){
       query += "?Conduct:HasDetentions=" + economicallyDisadvantaged
     }
 
     var fifthOption = document.getElementById("overNineAbsences")
-    var overNineAbsences = fifthOption.options[fifthOption.selectedIndex].value;
+    var overNineAbsences = fifthOption.options[fifthOption.selectedIndex].text;
     if(!(overNineAbsences === "None")){
       query += "?Att:Has09DayAbsLtr=" + overNineAbsences
     }
 
     var sixthOption = document.getElementById("overFourUnexcused")
-    var overFourUnexcused = sixthOption.options[sixthOption.selectedIndex].value;
+    var overFourUnexcused = sixthOption.options[sixthOption.selectedIndex].text;
     if(!(overFourUnexcused === "None")){
       query += "?Att:Has04DayUxAbsLtr=" + overFourUnexcused
     }
@@ -108,6 +108,16 @@ function App() {
               <h1 id = "InitialHeading"> SBHS Attendance Analytics </h1>
               </li>
           </ul>
+        </div>
+        <div>
+          <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item active">
+                 <Button id = "graphingButton" variant="outline-light">Graphing</Button>
+               </li>
+            </ul>
+          </div>
+
         </div>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ms-auto">

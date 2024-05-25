@@ -86,3 +86,13 @@
     font-size: 16px;
     margin: 4px 2px;
 }
+
+#graphingButton{
+    margin-left:100px;
+    width: 125px;
+    height:52px;
+    font-size: 24px;
+    background-color: darkgreen;
+    text-align: center;
+    font-family:'Trebuchet MS'
+}
