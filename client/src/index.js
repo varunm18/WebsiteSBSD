@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, Route } from 'react-router-dom';
+import FindTrends from './pages/findTrends';
 
 const router = createBrowserRouter([
   {path: '/' , element: <App />},
-  {path: '/findTrends' , element: <findTrends />},
-  {path: '/' , element: <App />}
+  {path: '/findTrends' , element: <FindTrends/>},
 ])
 
 

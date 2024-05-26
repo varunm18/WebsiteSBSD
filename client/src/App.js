@@ -179,7 +179,7 @@ function App() {
               <style>{'body { background-color: lightblue; }'}</style>
               </Helmet>
 
-              <h1 id = "InitialHeading"> SBHS Attendance Analytics </h1>
+              <h1 id = "InitialHeading">SBHS Attendence Analytics</h1>
               </li>
           </ul>
         </div>
