@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-//import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { RouterProvider, createBrowserRouter, Route } from 'react-router-dom';
 import FindTrends from './pages/findTrends';
+import StudentSearch from './pages/studentSearch';
 
 const router = createBrowserRouter([
   {path: '/' , element: <App />},
-  {path: '/findTrends' , element: <FindTrends/>},
+  {path: '/searchstudents' , element: <StudentSearch />},
+  {path: '/findtrends' , element: <FindTrends/>},
 ])
 
 
