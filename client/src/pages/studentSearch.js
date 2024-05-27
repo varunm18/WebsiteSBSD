@@ -212,7 +212,8 @@ function StudentSearch(){
         <br></br>
         <Button onClick = { (e) => findStudents(e)} id = "submitButton" variant="outline-light">Submit</Button>
       </div>
-        <p>
+        <br></br>
+        <p id = "studentResponse">
             Student Search
         </p>
         {(typeof backendData == 'undefined') ? (

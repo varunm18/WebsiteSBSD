@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import { jwtDecode } from "jwt-decode";
 import './App.css';
+import { Helmet } from 'react-helmet';
+import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 
 
 function App() {
@@ -39,7 +42,23 @@ function App() {
 
   return (
     <div>
-      <h1>SIGN IN PAGE</h1>
+      <Helmet>
+        <style>{'body { background-color: beige; }'}</style>
+      </Helmet>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
+      <div class = "container">
+        <br></br>
+        <h1 id = "signIn">LOGIN</h1>
+        <div>
+          {/* Put in form shit here */}
+        </div>
+      </div>
+      <br></br>
+
       <div id="signInDiv"></div>
         <div id="signOutDiv" hidden>
         { Object.keys(user).length != 0 &&
@@ -52,6 +71,21 @@ function App() {
           </div>
         }
       </div>
+
+      <br></br>
+      <br></br>
+
+      <div class = "btn-group">
+        <Button id = "returnToHome" variant="outline-light">
+          <Link to = '/findtrends'>Find Trends</Link>
+        </Button>
+        <Button id = "returnToHome" variant="outline-light">
+          <Link to = '/searchstudents'>Find Students</Link>
+        </Button>
+      </div>
+
+      <br></br>
+      <br></br>
     </div>
 
   )
