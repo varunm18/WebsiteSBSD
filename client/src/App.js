@@ -10,6 +10,7 @@ function App() {
 
   const [user, setUser] = useState({})
 
+
   function handleCallbackResponse(response) {
     console.log("Encoded JWT ID token: "+response.credential)
     var userObject = jwtDecode(response.credential)

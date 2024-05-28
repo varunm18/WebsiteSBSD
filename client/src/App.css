@@ -41,6 +41,16 @@
     margin-left:10px;
     justify-content:center;
     text-align: center;
+    
+}
+
+.btn-toolbar{
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+    font-family: 'Gill Sans';
+    display:inline-block;
+    margin-left:355px;
 }
 
 .form-select{
@@ -128,5 +138,9 @@
     font-family:'Trebuchet MS';
     color:black;
     border-radius: 15px;
-    
+}
+
+#findTrendsHeading{
+    text-align: center;
+    font-family: 'Gill Sans';
 }
