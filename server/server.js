@@ -62,6 +62,10 @@ app.get("/api", (req, res) => {
         sql+='Has09DayAbsLtr='+req.query.nineAbsences;
         params++;
     }
+    if(req.query.fifteenAbsences){
+        sql+=" AND "
+        sql+='Has15DayAbsLtr='+req.query.fifteenAbsences;
+    }
     if(req.query.fourAbsences){
         if(params>0){
             sql+=" AND "
@@ -72,6 +76,12 @@ app.get("/api", (req, res) => {
         sql+='Has04DayUxAbsLtr='+req.query.fourAbsences;
         params++;
     }
+
+    if(req.query.tenAbsences){
+        sql+=" WHERE "
+        sql+='Has10DayUxAbsLtr='+req.query.tenAbsences;
+    }
+
     console.log(sql);
     db.all(sql, (err, rows) => {
         if (err) {
