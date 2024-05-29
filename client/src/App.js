@@ -47,20 +47,15 @@ function App() {
         <style>{'body { background-color: beige; }'}</style>
       </Helmet>
       <br></br>
+      <h1 id = "firstHeading">SBHS Attendence Analytics</h1>
       <br></br>
-      <br></br>
-      <br></br>
+      
 
       <div class = "container">
         <br></br>
-        <h1 id = "signIn">LOGIN</h1>
-        <div>
-          {/* Put in form shit here */}
-        </div>
-      </div>
-      <br></br>
-
-      <div id="signInDiv"></div>
+        <h1 id = "signIn">LOGIN WITH GOOGLE</h1>
+        <br></br>
+        <div id="signInDiv"></div>
         <div id="signOutDiv" hidden>
         { Object.keys(user).length != 0 &&
           <button id = "signOutButton" onClick={ (e) => handleSignOut(e)}>Sign Out</button>
@@ -71,18 +66,19 @@ function App() {
             <h3 id = "username">{user.name}</h3>
           </div>
         }
-      </div>
-
-      <br></br>
-      <br></br>
-
-      <div class = "btn-group">
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div id = "homePageButtons" class = "btn-group">
         <Button id = "returnToHome" variant="outline-light">
           <Link to = '/findtrends'>Find Trends</Link>
         </Button>
         <Button id = "returnToHome" variant="outline-light">
           <Link to = '/searchstudents'>Find Students</Link>
         </Button>
+      </div>
       </div>
 
       <br></br>

@@ -5,9 +5,19 @@ import NavBar from '../components/NavBar'
 import GoogleMaps from '../components/GoogleMaps'
 import 'react-bootstrap'
 import {APIProvider, Map, AdvancedMarker, Pin, useMapsLibrary}from "@vis.gl/react-google-maps"
+import {Bar} from 'react-chartjs-2'
+import {Chart as ChartJS, BarElement, CategoryScale, LinearScale} from 'chart.js'
+
+ChartJS.register(
+  BarElement, 
+  CategoryScale, 
+  LinearScale
+)
 
 
 function FindTrends(){
+
+  const [BarData, setBarData] = useState({})
 
   const [backendData2, setBackendData2] = useState([])
   const southBrunswick = {lat:40.3807, lng:-74.5317};
@@ -19,6 +29,7 @@ function FindTrends(){
       data => {
         // console.log(data)
         getAddresses(data)
+        tallyRace(data)
       }
     )
   }
@@ -30,6 +41,7 @@ function FindTrends(){
       data => {
         // console.log(data)
         getAddresses(data)
+        tallyRace(data)
       }
     )
   }
@@ -40,6 +52,7 @@ function FindTrends(){
       data => {
         // console.log(data)
         getAddresses(data)
+        tallyRace(data)
       }
     )
   }
@@ -50,6 +63,7 @@ function FindTrends(){
       data => {
         // console.log(data)
         getAddresses(data)
+        tallyRace(data);
       }
     )
   }
@@ -82,9 +96,54 @@ function FindTrends(){
     console.log(backendData2)
   }
 
-  // useEffect(() => {
+  function tallyRace(data){
+    var asian = 0;
+    var multipleRaces = 0;
+    var black = 0;
+    var white = 0;
+    var hispanic = 0;
+    var absences = []
+    for(var element of data){
+      if(element.CalculatedRace === "Asian"){
+        asian++;
+      }
+      else if(element.CalculatedRace === "Multiple Races"){
+        multipleRaces++;
+      }
+      else if(element.CalculatedRace === "Black"){
+        black++;
+      }
+      else if(element.CalculatedRace === "White"){
+        white++;
+      }
+      else{
+        hispanic++;
+      } 
+    }
+    absences.push(asian)
+    absences.push(multipleRaces)
+    absences.push(black)
+    absences.push(white)
+    absences.push(hispanic)
 
-  // })
+    setBarData(absences)
+  }
+
+  const absencesMap = BarData.map((number) => <li>{number}</li>)
+
+  const data = {
+    labels: ['Asian', 'Multiple Races', 'Black', 'White', 'Hispanic'],
+    datasets: [{
+      label: '# of Absences',
+      data: [absencesMap[0], absencesMap[1], absencesMap[2], absencesMap[3], absencesMap[4]],
+      backgroundColor: 'white',
+      borderColor: 'black'
+    }]
+  }
+
+  const options = {
+
+  }
 
   return (
     <div>
@@ -126,6 +185,15 @@ function FindTrends(){
         </APIProvider>
       <br></br>
       <br></br>
+      <Bar
+        style={
+          {padding: '20px'}
+        }
+        data = {data}
+        options = {options}
+      >
+
+      </Bar>
     </div>
   )
 }

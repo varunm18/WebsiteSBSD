@@ -15,7 +15,9 @@ function NavBar(){
               <style>{'body { background-color: lightblue; }'}</style>
               </Helmet>
 
-              <h1 id = "InitialHeading">SBHS Attendence Analytics</h1>
+              <Link to = '/'>
+                <h1 id = "InitialHeading">SBHS Attendence Analytics</h1>
+              </Link>
               </li>
           </ul>
         </div>

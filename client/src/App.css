@@ -101,6 +101,11 @@
 #signInDiv{
     text-align: center;
     align-items: center;
+    margin-left: 525px;
+}
+
+#homePageButtons{
+    margin-left: 365px;;
 }
 
 #signOutButton{
@@ -143,4 +148,12 @@
 #findTrendsHeading{
     text-align: center;
     font-family: 'Gill Sans';
+}
+
+#firstHeading{
+    text-align: center;
+    color:black;
+    font-family: 'Times New Roman';
+    font-size: 60px;
+    margin-top: 15px;
 }
