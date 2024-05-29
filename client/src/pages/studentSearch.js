@@ -6,10 +6,12 @@ import NavBar from '../components/NavBar';
 function StudentSearch(){
 
     const [backendData, setBackendData] = useState([])
+    
 
     function findStudents() {
         let params = 0;
         let query = "/api"
+
         var firstOption = document.getElementById("gradeLevel")
         var gradeLevel = firstOption.options[firstOption.selectedIndex].text
         if(!(gradeLevel === "None")){
@@ -212,7 +214,8 @@ function StudentSearch(){
         <br></br>
         <Button onClick = { (e) => findStudents(e)} id = "submitButton" variant="outline-light">Submit</Button>
       </div>
-        <br></br>
+      <br></br>
+      <br></br>
         <p id = "studentResponse">
             Student Search
         </p>
@@ -220,7 +223,7 @@ function StudentSearch(){
             <p>Loading ...</p>
         ): (
             backendData.map((student, i) => 
-            <p key = {i} >{student.FirstName} {student.LastName}, Grade: {student.GradeLevel}, Race: {student.CalculatedRace}, Econ Disadvantaged: {student.EconomicallyDisadvantaged}, Detentions: {student.HasDetentions}, &gt;9 Absences: {student.Has09DayAbsLtr}, &gt;4 Absences: {student.Has04DayUxAbsLtr}</p>
+            <p id = "studentResponse" key = {i} >{student.FirstName} {student.LastName}, Grade: {student.GradeLevel}, Race: {student.CalculatedRace}, Econ Disadvantaged: {student.EconomicallyDisadvantaged}, Detentions: {student.HasDetentions}, &gt;9 Absences: {student.Has09DayAbsLtr}, &gt;4 Absences: {student.Has04DayUxAbsLtr}</p>
             )
         )}
     </div>

@@ -8,12 +8,15 @@ import {APIProvider, Map, AdvancedMarker, Pin}from "@vis.gl/react-google-maps"
     
 // }
 
+
+
+
 fetch("").then((res) => res.json).then((data) => {
     console.log(data);
 })
 
 
-export default function GoogleMaps(){
+function GoogleMaps (){
     const southBrunswick = {lat:40.3807, lng:-74.5317};
 
     return(
@@ -28,3 +31,6 @@ export default function GoogleMaps(){
         </APIProvider>
     )
 }
+
+
+export default GoogleMaps
