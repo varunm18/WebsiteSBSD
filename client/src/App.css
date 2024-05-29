@@ -11,11 +11,14 @@
 #username{
     color: white;
     font-family: 'Times New Roman';
+    margin-right:600px;
+    text-align:center;
 }
 
 #userPicture{
-    max-width: 24px;
-    max-height: 24px;
+    max-width: 40px;
+    max-height: 40px;
+    margin-left:22px;
 }
 
 #google{
@@ -42,6 +45,10 @@
     justify-content:center;
     text-align: center;
     
+}
+
+#findDetentions{
+    margin-left:645px;
 }
 
 .btn-toolbar{
@@ -101,7 +108,15 @@
 #signInDiv{
     text-align: center;
     align-items: center;
-    margin-left: 525px;
+    margin-left: 530px;
+}
+
+#signOutDiv{
+    margin-left:600px;
+}
+
+#signOutButton{
+    margin-left:150px;
 }
 
 #homePageButtons{
@@ -156,4 +171,8 @@
     font-family: 'Times New Roman';
     font-size: 60px;
     margin-top: 15px;
+}
+
+#center{
+    margin-left: 500px;
 }

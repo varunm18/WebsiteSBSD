@@ -18,6 +18,7 @@ ChartJS.register(
 function FindTrends(){
 
   const [BarData, setBarData] = useState({})
+  const [detentionData, setDetentionData] = useState({})
 
   const [backendData2, setBackendData2] = useState([])
   const southBrunswick = {lat:40.3807, lng:-74.5317};
@@ -68,6 +69,17 @@ function FindTrends(){
     )
   }
 
+  function findDetentons(){
+    fetch("/api?detention=\'Y\'").then(
+      response => response.json()
+    ).then(
+      data => {
+        // console.log(data)
+        tallyRace(data);
+      }
+    )
+  }
+
   function getAddresses(data){
     var addresses = []
     for (var element of data) {
@@ -84,12 +96,12 @@ function FindTrends(){
           if(data.summary.numResults==1){
             addresses.push({lat:data.results[0].position.lat, lng:data.results[0].position.lon})
           }
-        }
+        } 
       ).catch(error => {
         // Do something on error 
         console.log(error)
       })
-    }
+    } 
 
     setBackendData2(addresses)
 
@@ -126,24 +138,73 @@ function FindTrends(){
     absences.push(white)
     absences.push(hispanic)
 
+    console.log(absences)
+
     setBarData(absences)
   }
 
-  const absencesMap = BarData.map((number) => <li>{number}</li>)
+  function tallyRace(data){
+    var asian = 0;
+    var multipleRaces = 0;
+    var black = 0;
+    var white = 0;
+    var hispanic = 0;
+    var absences = []
+    for(var element of data){
+      if(element.CalculatedRace === "Asian"){
+        asian++;
+      }
+      else if(element.CalculatedRace === "Multiple Races"){
+        multipleRaces++;
+      }
+      else if(element.CalculatedRace === "Black"){
+        black++;
+      }
+      else if(element.CalculatedRace === "White"){
+        white++;
+      }
+      else{
+        hispanic++;
+      } 
+    }
+    absences.push(asian)
+    absences.push(multipleRaces)
+    absences.push(black)
+    absences.push(white)
+    absences.push(hispanic)
 
-  const data = {
-    labels: ['Asian', 'Multiple Races', 'Black', 'White', 'Hispanic'],
+    console.log(absences)
+
+    setBarData(absences)
+  }
+
+  //const absencesMap = BarData.map((number) => <li>{number}</li>)
+
+  const absencesdata = {
+    labels: ['Asian', 'Multiple Races', 'Black', 'White', 'Hispanic'], 
     datasets: [{
-      label: '# of Absences',
-      data: [absencesMap[0], absencesMap[1], absencesMap[2], absencesMap[3], absencesMap[4]],
-      backgroundColor: 'white',
-      borderColor: 'black'
+      labels: '# of Absences', 
+      data: BarData,
+      backgroundColor: [
+        "red",
+        "orange",
+        "yellow",
+        "blue", 
+        "green"
+      ],
+      borderColor: 'black',
+      borderWidth: 3,
+      borderRadius: 10
     }]
   }
 
   const options = {
-
-  }
+    plugins: {
+      title: {
+        text: "Absences",
+      },
+    },
+  } 
 
   return (
     <div>
@@ -178,22 +239,34 @@ function FindTrends(){
                           </AdvancedMarker>)
                     )}
                     <AdvancedMarker position={southBrunswick}>
-                        <Pin background={"grey"} borderColor={"green"}></Pin>
+                        <Pin background={"black"} borderColor={"white"}></Pin>
                     </AdvancedMarker>
                 </Map>
             </div>
         </APIProvider>
       <br></br>
       <br></br>
-      <Bar
+      <h1 id = "findTrendsHeading">Compare Absences/Detentions</h1> 
+      <br></br>
+      { <Bar
         style={
-          {padding: '20px'}
+          {padding: '40px', width: "80%"}
         }
-        data = {data}
+        data = {absencesdata}
         options = {options}
       >
 
-      </Bar>
+      </Bar>} 
+      <br></br>
+      <div class = "center">
+      <div id = "findDetentions" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button id = "four" type="button" class="btn btn-secondary" onClick={(e) => findDetentons(e)}>Compare Detentions</button>
+        </div>
+      </div>  
+      </div>
+      <br></br>
+      <br></br>
     </div>
   )
 }

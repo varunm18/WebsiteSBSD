@@ -63,7 +63,7 @@ function App() {
         {user &&
           <div>
             <img id = "userPicture" src={user.picture}></img>
-            <h3 id = "username">{user.name}</h3>
+            <h3 id = "username">{"Welcome " + user.name}</h3>
           </div>
         }
         </div>
@@ -72,12 +72,16 @@ function App() {
         <br></br>
         <br></br>
         <div id = "homePageButtons" class = "btn-group">
-        <Button id = "returnToHome" variant="outline-light">
+        { Object.keys(user).length != 0 &&
+        <div>
+          <Button id = "returnToHome" variant="outline-light">
           <Link to = '/findtrends'>Find Trends</Link>
         </Button>
         <Button id = "returnToHome" variant="outline-light">
           <Link to = '/searchstudents'>Find Students</Link>
         </Button>
+        </div>
+        }
       </div>
       </div>
 
