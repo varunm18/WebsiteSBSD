@@ -1,4 +1,4 @@
-# South Brunswick School Distric Attendance Analytics Website
+# South Brunswick School District Attendance Analytics Website
 Prototype for an attendance analytics website for my school district as requested by our superintendent
 
 ### Description
