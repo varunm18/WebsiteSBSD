@@ -2,7 +2,7 @@
 Prototype for an attendance analytics website for my school district as requested by our superintendent
 
 ### Description
-* RESTful API backend that has connection to a testing SQL database of student data 
+* RESTful API from Node.js backend that has connection to a testing SQL database of student data 
 * React App frontend with a connection to backend that displays the interface
 * [Google OAuth 2.0](https://developers.google.com/identity/protocols/oauth2) and [Google One Tap](https://developers.google.com/identity/gsi/web/guides/features) for sign in authentication for approved users
 * [Google Maps JavaScript API](https://developers.google.com/maps) centered on South Brunswick with [tomtom Geocoding API](https://developer.tomtom.com/geocoding-api/documentation/product-information/introduction) to display markers of homes based on various metrics
